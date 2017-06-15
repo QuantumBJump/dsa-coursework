@@ -56,6 +56,50 @@ I then noted the start time, called the algorithm on \texttt{toBeSorted}, noted 
 
 \chapter{Implementing Quicksort}
 
+I decided that the fourth sorting algorithm I would implement would be Quick Sort. The code I used to implement that sorting algorithm was:
+
+\begin{lstlisting}[language=java, caption=Quicksort implementation]
+public static void quickSort(int[] inputArray, int low, int high) {
+    if (inputArray == null || inputArray.length == 0) {
+        return;
+    }
+    if (low >= high) {
+        return;
+    }
+
+    //pick pivot
+    int middle = low + (high - low) / 2;
+    int pivot = inputArray[middle];
+
+    // make left < pivot and right > pivot
+    int i = low, j = high;
+    while (i <= j) {
+        while(inputArray[i] < pivot) {
+            i++;
+        }
+        while(inputArray[j] > pivot) {
+            j--;
+        }
+
+        if (i <= j) {
+            int temp = inputArray[i];
+            inputArray[i] = inputArray[j];
+            inputArray[j] = temp;
+            i++;
+            j--;
+        }
+    }
+
+    // recursively sort two subarrays
+    if (low < j) {
+        quickSort(inputArray, low, j);
+    }
+    if (high > i) {
+        quickSort(inputArray, i, high);
+    }
+}
+\end{lstlisting}
+
 \chapter{Comparing Time Complexity}
 
 \chapter{Discussing Time Complexity}

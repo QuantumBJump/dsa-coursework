@@ -46,15 +46,15 @@ public class Sort {
 
 
     /* Merge Sort function */
-    public static void mergSort(int[] a, int low, int high)
+    public static void mergeSort(int[] a, int low, int high)
     {
         int N = high - low;
         if (N <= 1)
             return;
         int mid = low + N/2;
         // recursively sort 
-        mergSort(a, low, mid);
-        mergSort(a, mid, high);
+        mergeSort(a, low, mid);
+        mergeSort(a, mid, high);
         // merge two sorted subarrays
         int[] temp = new int[N];
         int i = low, j = mid;
@@ -71,5 +71,46 @@ public class Sort {
         }
         for (int k = 0; k < N; k++)
             a[low + k] = temp[k];
+    }
+
+    public static void quickSort(int[] inputArray, int low, int high) {
+        if (inputArray == null || inputArray.length == 0) {
+            return;
+        }
+        if (low >= high) {
+            return;
+        }
+
+        //pick pivot
+        int middle = low + (high - low) / 2;
+        int pivot = inputArray[middle];
+
+        // make left < pivot and right > pivot
+        int i = low, j = high;
+        while (i <= j) {
+            while(inputArray[i] < pivot) {
+                i++;
+            }
+            while(inputArray[j] > pivot) {
+                j--;
+            }
+
+            if (i <= j) {
+                int temp = inputArray[i];
+                inputArray[i] = inputArray[j];
+                inputArray[j] = temp;
+                i++;
+                j--;
+            }
+        }
+
+        // recursively sort two subarrays
+        if (low < j) {
+            quickSort(inputArray, low, j);
+        }
+        if (high > i) {
+            quickSort(inputArray, i, high);
+        }
+
     }
 }

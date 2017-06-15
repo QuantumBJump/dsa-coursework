@@ -51,7 +51,7 @@ public class Sort_Tester {
         // and again
         System.arraycopy(arr, 0, toBeSorted, 0, arr.length);
         start = System.nanoTime();
-        x.mergSort(toBeSorted, 0, toBeSorted.length);
+        x.mergeSort(toBeSorted, 0, toBeSorted.length);
         finish = System.nanoTime();
         elapsedTime = finish - start;
         System.out.println("Merge sort took: " + elapsedTime/1000000 + " milliseconds.");
