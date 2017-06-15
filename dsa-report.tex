@@ -26,6 +26,32 @@ This report compares and contrasts the time efficiency of the Bubble Sort, Inser
 \tableofcontents
 
 \chapter{Setting up Sort\textunderscore Tester.java}
+In order to set up the testing, I first added the following code to allow the user to define the size of the random array to generate.
+
+\begin{lstlisting}[language=java, caption=Accepting user input]
+import java.util.Scanner;
+...
+Scanner scanner = new Scanner(System.in);
+System.out.println("How big is your array?");
+int arraySize = scanner.nextInt();
+\end{lstlisting}
+
+Then I generated a random array of that size using:
+
+\begin{lstlisting}[language=java, caption=Generating the randomised array]
+import java.util.Random;
+...
+int[] arr = new int[arraySize];
+Random random = new Random();
+for (int i = 0; i < arrayLength; i++) {
+    arr[i] = random.nextInt(50);
+}
+\end{lstlisting}
+
+Before running each test, I copied the generated randomised array into a second array, \texttt{toBeSorted}, so I could sort that array without affecting the original array. This meant that each algorithm was operating on the same dataset, which meant the test was fairer.
+
+I then noted the start time, called the algorithm on \texttt{toBeSorted}, noted the finish time and worked out the time elapsed in nanoseconds using \texttt{System.nanoTime()}.
+
 
 
 \chapter{Implementing Quicksort}

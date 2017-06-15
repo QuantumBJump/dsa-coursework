@@ -57,7 +57,7 @@ public class Sort_Tester {
         System.out.println("Merge sort took: " + elapsedTime/1000000 + " milliseconds.");
 
         System.arraycopy(toBeSorted, 0, arr, 0, toBeSorted.length);
-        printArray(arr);
+//        printArray(arr);
     }
 
     static void printArray(int a[])
