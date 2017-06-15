@@ -34,7 +34,6 @@ out
 **/selenium_standalone_binaries/
 
 # LATEX #
-*.csv
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
