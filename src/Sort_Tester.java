@@ -56,6 +56,13 @@ public class Sort_Tester {
         elapsedTime = finish - start;
         System.out.println("Merge sort took: " + elapsedTime/1000000 + " milliseconds.");
 
+        System.arraycopy(arr, 0, toBeSorted, 0, arr.length);
+        start = System.nanoTime();
+        x.quickSort(toBeSorted, 0, toBeSorted.length);
+        finish = System.nanoTime();
+        elapsedTime = finish - start;
+        System.out.println("Quick sort took: " + elapsedTime/1000000 + " milliseconds.");
+
         System.arraycopy(toBeSorted, 0, arr, 0, toBeSorted.length);
 //        printArray(arr);
     }
