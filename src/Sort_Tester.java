@@ -58,7 +58,7 @@ public class Sort_Tester {
 
         System.arraycopy(arr, 0, toBeSorted, 0, arr.length);
         start = System.nanoTime();
-        x.quickSort(toBeSorted, 0, toBeSorted.length);
+        x.quickSort(toBeSorted, 0, toBeSorted.length-1);
         finish = System.nanoTime();
         elapsedTime = finish - start;
         System.out.println("Quick sort took: " + elapsedTime/1000000 + " milliseconds.");
