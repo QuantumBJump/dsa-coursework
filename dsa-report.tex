@@ -1,9 +1,13 @@
 \documentclass{report}
-
 %package definitions
 \usepackage{listings}
 \usepackage{courier}
 \usepackage{lipsum}
+\usepackage{pgfplots}
+\usepackage{filecontents}
+
+%setup for pgfplots
+\pgfplotsset{compat=1.9}
 
 %title
 \author{Quinn Stevens}
@@ -101,6 +105,20 @@ public static void quickSort(int[] inputArray, int low, int high) {
 \end{lstlisting}
 
 \chapter{Comparing Time Complexity}
+
+
+\begin{tikzpicture}
+  \begin{axis} [
+    title={Plotting time taken to sort different size arrays},
+    xlabel={Size of array},
+    ylabel={Time taken to sort}
+    ]
+    \addplot[color=red] table[x=array size,y=bubble sort, col sep=comma] {results.csv};
+    \addplot[color=orange] table[x=array size, y=insertion sort, col sep=comma] {results.csv};
+    \addplot[color=blue] table[x=array size, y=merge sort, col sep=comma] {results.csv};
+    \addplot[color=green] table[x=array size, y=quick sort, col sep=comma] {results.csv};
+  \end{axis}
+\end{tikzpicture}
 
 \chapter{Discussing Time Complexity}
 
