@@ -1,13 +1,14 @@
 \documentclass{report}
 %package definitions
 \usepackage{listings}
+\usepackage{minted}
 \usepackage{courier}
 \usepackage{lipsum}
 \usepackage{pgfplots}
 \usepackage{filecontents}
 
 %setup for pgfplots
-\pgfplotsset{compat=1.9}
+\pgfplotsset{width=\linewidth, compat=1.9}
 
 %title
 \author{Quinn Stevens}
@@ -111,18 +112,149 @@ public static void quickSort(int[] inputArray, int low, int high) {
   \begin{axis} [
     title={Plotting time taken to sort different size arrays},
     xlabel={Size of array},
-    ylabel={Time taken to sort}
+    ylabel={Time taken to sort},
+    legend style={at={(0.2, 0.9)},anchor=north}
     ]
-    \addplot[color=red] table[x=array size,y=bubble sort, col sep=comma] {results.csv};
-    \addplot[color=orange] table[x=array size, y=insertion sort, col sep=comma] {results.csv};
-    \addplot[color=blue] table[x=array size, y=merge sort, col sep=comma] {results.csv};
-    \addplot[color=green] table[x=array size, y=quick sort, col sep=comma] {results.csv};
+    \addplot[color=red] table[x=array size,y=bubble sort, col sep=comma] {results.txt};
+    \addplot[color=orange] table[x=array size, y=insertion sort, col sep=comma] {results.txt};
+    \addplot[color=blue] table[x=array size, y=merge sort, col sep=comma] {results.txt};
+    \addplot[color=green] table[x=array size, y=quick sort, col sep=comma] {results.txt};
+    \legend{Bubble Sort, Insertion Sort, Merge Sort, Quick Sort}
   \end{axis}
 \end{tikzpicture}
 
-\chapter{Discussing Time Complexity}
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Plotting time taken to sort different size arrays (bar)},
+        xlabel={Size of array},
+        ylabel={Time taken to sort},
+        x tick label style={/pgf/number format/fixed},
+        enlargelimits=0.05,
+        legend style={at={(0.5, 0.9)},
+        anchor=north, legend columns = -1},
+        ybar interval=0.7
+        ]
+        \addplot table[x=array size, y=bubble sort, col sep = comma] {results.txt};
+        \addplot table[x=array size, y=insertion sort, col sep=comma] {results.txt};
+        \addplot table[x=array size, y=merge sort, col sep=comma] {results.txt};
+        \addplot table[x=array size, y=quick sort, col sep=comma] {results.txt};
+        \legend {Bubble Sort, Insertion Sort, Merge Sort, Quick Sort}
+    \end{axis}
+\end{tikzpicture}
 
+\chapter{Discussing Time Complexity}
 \addcontentsline{toc}{chapter}{Appendix 1: Segregating Odd and Even Numbers}
 \chapter*{Appendix 1: Segregating Odd and Even Numbers}
+\textbf{N.B.} The 'pseudocode' in these appendices is actually Python as I find that easier to write.
 
+The following pseudocode takes an input array and outputs the array but with all even numbers on the left and all odd numbers on the right.
+
+Here is the pseudocode:
+\begin{lstlisting}[language=Python]
+def segregate(array):
+    # make pointers to the first and last element
+    low = 0
+    high = len(array)-1
+    
+    while low < high:
+        # move the lower pointer up until you find an odd number
+        while array[low] % 2 == 0 and low < len(array)-1:
+            low++
+        # move the higher pointer down until you find an even number
+        while array[high] % 2 != 0 and high > 0:
+            high--
+        # swap the two numbers being pointed to
+        if low < high:
+            temp = array[low]
+            array[low] = array[high]
+            array[high] = temp
+    # output segregated array
+    return array
+\end{lstlisting}
+This algorithm has a Big-O notation of $O(n)$
+
+\addcontentsline{toc}{chapter}{Appendix 2: Recursion}
+\chapter*{Appendix 2: Recursion}
+\addcontentsline{toc}{section}{Pizza Cutting}
+\section*{Pizza Cutting}
+\subsection*{Pseudocode}
+The following pseudocode works out the number of slices of pizza you will have if you make $n$ cuts through the center.
+
+Here is the pseudocode:
+\begin{lstlisting}[language=Python]
+def pizza(cuts):
+    # end condition
+    if cuts == 1:
+        return 2
+    # recurse
+    return pizza(cuts-1) + 2
+\end{lstlisting}
+\subsection*{Testing}
+When the function is called for \texttt{cuts=4}, it resolves as follows:
+\begin{lstlisting}
+pizza(4)
+v
+pizza(3) + 2
+v
+pizza(2) + 2 + 2
+v
+pizza(1) + 2 + 2 + 2
+v
+2 + 2 + 2 + 2
+v
+4
+\end{lstlisting}
+
+\addcontentsline{toc}{section}{Parking Spaces}
+\section*{Parking Spaces}
+\subsection*{Pseudocode}
+\paragraph{}
+The following function takes the number of motorcycle parking spaces on a road, and returns the number of different ways to park vehicles on that road, assuming a car takes up 3 motorcycle spaces.
+
+\begin{lstlisting}[language=Python]
+# find the number of permutations
+def park(spaces):
+    # base cases
+    if spaces == 0:
+        return 0
+    if spaces == 1 or spaces == 2:
+        return 1
+    if spaces == 3:
+        return 2
+    # recurse
+    return park(spaces-1) + park(spaces-3)
+\end{lstlisting}
+\subsection*{Testing}
+\paragraph{}
+For \texttt{spaces=5} the code resoves as follows:
+\begin{lstlisting}
+park(5)
+v
+park(4) + park(2)
+v
+park(3) + park(1) + 1
+v
+2 + 1 + 1
+v
+4
+\end{lstlisting}
+
+For \texttt{park(6)} the function resolves like this:
+\begin{lstlisting}
+park(6)
+v
+park(5) + park(3)
+v
+park(4) + park(2) + 2
+v
+park(3) + park(1) + 1 + 2
+v
+2 + 1 + 1 + 2
+v
+6
+\end{lstlisting}
+
+so \texttt{park(6) = 6}
 \end{document}
+
+
