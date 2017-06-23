@@ -107,6 +107,8 @@ public static void quickSort(int[] inputArray, int low, int high) {
 
 \chapter{Comparing Time Complexity}
 
+In this chapter I will go through the results of running Sort\textunderscore Tester and discuss their time complexity.
+
 \begin{tikzpicture}
     \begin{axis}[
         title={The time to sort 100,000 data (Bubble Sort)},
@@ -126,6 +128,8 @@ public static void quickSort(int[] inputArray, int low, int high) {
         \addplot table[x=array size, y=insertion sort, col sep=comma] {results.txt};
     \end{axis}
 \end{tikzpicture}
+
+These two graphs are very clearly exponential, although bubble sort's time taken grows a lot faster than insertion sort. Because the graphs are exponential, this means that the time complexity of these algorithms is $O(n^2)$
 
 \begin{tikzpicture}
     \begin{axis}[
@@ -147,6 +151,8 @@ public static void quickSort(int[] inputArray, int low, int high) {
     \end{axis}
 \end{tikzpicture}
 
+These two graphs, however, are much harder to determine time complexity from as the times involved are so small. By doing some research online, however, I was able to determine that the time complexity of the two algorithms is \\$O(n\cdot log(n))$
+
 \begin{tikzpicture}
     \begin{axis}[
         title={Plotting time taken to sort different size arrays (bar)},
@@ -167,8 +173,8 @@ public static void quickSort(int[] inputArray, int low, int high) {
     \end{axis}
 \end{tikzpicture}
 
-\chapter{Discussing Time Complexity}
-\addcontentsline{toc}{chapter}{Appendix 1: Segregating Odd and Even Numbers}
+In this bar graph, we can see that merge- and quicksort are much better than bubble and insertion sort. technically, merge sort is better than quick sort too, because it has a better worst-case time complexity ($O(n\cdot log(n))$) than quick sort's ($O(n^2$)
+
 \chapter*{Appendix 1: Segregating Odd and Even Numbers}
 \textbf{N.B.} The 'pseudocode' in these appendices is actually Python as I find that easier to write.
 
