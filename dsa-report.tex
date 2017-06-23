@@ -33,17 +33,22 @@ This report compares and contrasts the time efficiency of the Bubble Sort, Inser
 \chapter{Setting up Sort\textunderscore Tester.java}
 In order to set up the testing, I first added the following code to allow the user to define the size of the random array to generate.
 
-\begin{lstlisting}[language=java, caption=Accepting user input]
+\begin{listing}[ht]
+\begin{minted}{java}
 import java.util.Scanner;
 ...
 Scanner scanner = new Scanner(System.in);
 System.out.println("How big is your array?");
 int arraySize = scanner.nextInt();
-\end{lstlisting}
+\end{minted}
+\caption{Setting up Sort\textunderscore Tester.java}
+\label{lst:setting up sort tester}
+\end{listing}
 
 Then I generated a random array of that size using:
 
-\begin{lstlisting}[language=java, caption=Generating the randomised array]
+\begin{listing}[ht]
+\begin{minted}{java}
 import java.util.Random;
 ...
 int[] arr = new int[arraySize];
@@ -51,7 +56,10 @@ Random random = new Random();
 for (int i = 0; i < arrayLength; i++) {
     arr[i] = random.nextInt(50);
 }
-\end{lstlisting}
+\end{minted}
+\caption{Generating the Randomised Array}
+\label{lst: generating array}
+\end{listing}
 
 Before running each test, I copied the generated randomised array into a second array, \texttt{toBeSorted}, so I could sort that array without affecting the original array. This meant that each algorithm was operating on the same dataset, which meant the test was fairer.
 
@@ -61,9 +69,10 @@ I then noted the start time, called the algorithm on \texttt{toBeSorted}, noted 
 
 \chapter{Implementing Quicksort}
 
-I decided that the fourth sorting algorithm I would implement would be Quick Sort. The code I used to implement that sorting algorithm was:
+I decided that the fourth sorting algorithm I would implement would be Quick Sort. The code I used to implement that sorting algorithm is listed on the next page in Listing \ref{lst:quicksort implementation}.
 
-\begin{lstlisting}[language=java, caption=Quicksort implementation]
+\begin{listing}[ht]
+\begin{minted}{java}
 public static void quickSort(int[] inputArray, int low, int high) {
     if (inputArray == null || inputArray.length == 0) {
         return;
@@ -103,7 +112,10 @@ public static void quickSort(int[] inputArray, int low, int high) {
         quickSort(inputArray, i, high);
     }
 }
-\end{lstlisting}
+\end{minted}
+\caption{Quicksort Implementation}
+\label{lst:quicksort implementation}
+\end{listing}
 
 \chapter{Comparing Time Complexity}
 
@@ -181,7 +193,7 @@ In this bar graph, we can see that merge- and quicksort are much better than bub
 The following pseudocode takes an input array and outputs the array but with all even numbers on the left and all odd numbers on the right.
 
 Here is the pseudocode:
-\begin{lstlisting}[language=Python]
+\begin{minted}{python}
 def segregate(array):
     # make pointers to the first and last element
     low = 0
@@ -201,7 +213,7 @@ def segregate(array):
             array[high] = temp
     # output segregated array
     return array
-\end{lstlisting}
+\end{minted}
 This algorithm has a Big-O notation of $O(n)$
 
 \addcontentsline{toc}{chapter}{Appendix 2: Recursion}
@@ -212,14 +224,14 @@ This algorithm has a Big-O notation of $O(n)$
 The following pseudocode works out the number of slices of pizza you will have if you make $n$ cuts through the center.
 
 Here is the pseudocode:
-\begin{lstlisting}[language=Python]
+\begin{minted}{python}
 def pizza(cuts):
     # end condition
     if cuts == 1:
         return 2
     # recurse
     return pizza(cuts-1) + 2
-\end{lstlisting}
+\end{minted}
 \subsection*{Testing}
 When the function is called for \texttt{cuts=4}, it resolves as follows:
 \begin{lstlisting}
@@ -242,7 +254,7 @@ v
 \paragraph{}
 The following function takes the number of motorcycle parking spaces on a road, and returns the number of different ways to park vehicles on that road, assuming a car takes up 3 motorcycle spaces.
 
-\begin{lstlisting}[language=Python]
+\begin{minted}{python}
 # find the number of permutations
 def park(spaces):
     # base cases
@@ -254,7 +266,7 @@ def park(spaces):
         return 2
     # recurse
     return park(spaces-1) + park(spaces-3)
-\end{lstlisting}
+\end{minted}
 \subsection*{Testing}
 \paragraph{}
 For \texttt{spaces=5} the code resoves as follows:
