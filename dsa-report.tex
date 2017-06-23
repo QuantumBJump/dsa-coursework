@@ -8,7 +8,7 @@
 \usepackage{filecontents}
 
 %setup for pgfplots
-\pgfplotsset{width=\linewidth, compat=1.9}
+\pgfplotsset{width=10cm, compat=1.9}
 
 %title
 \author{Quinn Stevens}
@@ -109,7 +109,7 @@ public static void quickSort(int[] inputArray, int low, int high) {
 
 \begin{tikzpicture}
     \begin{axis}[
-        title={Plotting time taken to sort different size arrays (Bubble Sort)},
+        title={The time to sort 100,000 data (Bubble Sort)},
         title style={yshift=1.5ex},
         xlabel={Size of array (thousands of items)},
         ylabel={Time taken to sort (milliseconds)}]
@@ -119,7 +119,7 @@ public static void quickSort(int[] inputArray, int low, int high) {
 
 \begin{tikzpicture}
     \begin{axis}[
-        title={Plotting time taken to sort different size arrays (Insertion Sort)},
+        title={The time to sort 100,000 data (Insertion Sort)},
         title style={yshift=1.5ex},
         xlabel={Size of Array (thousands of items)},
         ylabel={Time Taken to Sort (milliseconds)}]
@@ -129,7 +129,7 @@ public static void quickSort(int[] inputArray, int low, int high) {
 
 \begin{tikzpicture}
     \begin{axis}[
-        title={Plotting time taken to sort different size arrays (Merge Sort)},
+        title={The time to sort 100,000 data (Merge Sort)},
         title style={yshift=1.5ex},
         xlabel={Size of Array (thousands of items)},
         ylabel={Time Taken to Sort (milliseconds)}]
@@ -139,7 +139,7 @@ public static void quickSort(int[] inputArray, int low, int high) {
 
 \begin{tikzpicture}
     \begin{axis}[
-        title={Plotting time taken to sort different size arrays (Quick Sort)},
+        title={The time to sort 100,000 data (Quick Sort)},
         title style={yshift=1.5ex},
         xlabel={Size of Array (thousands of items)},
         ylabel={Time Taken to Sort (milliseconds)}]
@@ -150,12 +150,13 @@ public static void quickSort(int[] inputArray, int low, int high) {
 \begin{tikzpicture}
     \begin{axis}[
         title={Plotting time taken to sort different size arrays (bar)},
+        title style={yshift=1.5ex},
         xlabel={Size of array},
         ylabel={Time taken to sort},
         x tick label style={/pgf/number format/fixed},
         enlargelimits=0.05,
-        legend style={at={(0.5, 0.9)},
-        anchor=north, legend columns = -1},
+        legend style={at={(0.35, 0.95)},
+        anchor=north, legend columns = 2},
         ybar interval=0.7
         ]
         \addplot table[x=array size, y=bubble sort, col sep = comma] {results.txt};
