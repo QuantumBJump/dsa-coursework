@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Sort_Tester {
     static Random random = new Random();
-    static File outputfile = new File("results.csv");
+    static File outputfile = new File("results.txt");
     static String outputString = "array size, bubble sort, insertion sort, merge sort, quick sort\n";
 
     public static void write(File file, String output) {
@@ -37,7 +37,7 @@ public class Sort_Tester {
         long elapsedTime;
         // copy of array so we can sort without changing original array
         int[] toBeSorted = new int[array.length];
-        outputString = outputString + Integer.toString(array.length) + ", ";
+        outputString = outputString + Integer.toString(array.length/1000) + ", ";
 
         Sort x = new Sort();
 
@@ -76,7 +76,7 @@ public class Sort_Tester {
     {
         // allow user to input custom array size
 
-        int[] arraySizes = {100, 1000, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000};
+        int[] arraySizes = {20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000};
 //        Scanner scanner = new Scanner(System.in);
 //        System.out.println("How big is your array?");
 //        int arraySize = scanner.nextInt();
